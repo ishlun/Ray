@@ -1,6 +1,12 @@
 #include <cmath>
 #include "functions.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <unistd.h>
+#endif
+
 void transformVector(double vec[3],const double m[16])
 {
 	double 	tx=vec[0]*m[0]+vec[1]*m[4]+vec[2]*m[8]+m[12],
@@ -155,12 +161,14 @@ void normalize(double r[3])
 	r[1]/=len;
 	r[2]/=len;
 }
+
 void scale(double a[3],double k)
 {
 	a[0]*=k;
 	a[1]*=k;
 	a[2]*=k;
 }
+
 double dot(double a[3], double b[3])
 {
 	return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
@@ -180,4 +188,13 @@ double clamp(double x,double min,double max)
     else if (x > max)
         x = max;
     return x;
+}
+
+void ray_sleep(int ms)
+{
+    #ifdef _WIN32
+    Sleep(ms);
+    #else
+    usleep(ms);
+    #endif
 }
