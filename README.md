@@ -5,6 +5,9 @@
 
 Welcome to Ray. A C++ program that can do Raytracing in the console. This is pure bit-beauty.
 
+## Demo Video
+[![Demo Video](images/preview.png)](https://youtu.be/vvscbnWMeIE)
+
 ## License
 
 This program is licensed under the GNU GPL v3 License. Please read the License file to know about the usage terms and conditions.
