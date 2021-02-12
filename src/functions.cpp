@@ -1,4 +1,4 @@
-#include <cmath>
+#include <math.h>
 #include "functions.h"
 
 #ifdef _WIN32

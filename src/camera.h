@@ -10,14 +10,14 @@ class camera {
 public:
   double x, y, z;
   double matrix[16], inv[16];
-  camera(double r, double alfa, double beta) {
+  camera(double r, double alfa, double beta, double x, double y, double z) {
     // alfa is camera's angle along the xy plane.
     // beta is camera's angle along z axis
     // r is the distance from the camera to the origin
     double a = sin(alfa), b = cos(alfa), c = sin(beta), d = cos(beta);
-    x = r * b * d;
-    y = r * a * d;
-    z = r * c;
+    this->x = r * b * d + x;
+    this->y = r * a * d + y;
+    this->z = r * c + z;
 
     // matrix
     matrix[3] = matrix[7] = matrix[11] = 0;
@@ -42,6 +42,7 @@ public:
     // invert
     invert(inv, matrix);
   }
+
   double rayTrace(double origin[3], double unit[3], ball balls[], int n,
                   double altitute, double coeff, int limit) {
     double color;
